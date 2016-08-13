@@ -38,11 +38,11 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <!--
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                    -->
+                    {{#if project}}
+                      <li>
+                          <a ng-href="#/newproject">New Project</a>
+                      </li>
+                    {{/if}}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a>Luis Guerreiro</a></li>
@@ -82,6 +82,10 @@
                         templateUrl: 'views/project-details.html',
                         controller: 'ProjectDetailsController'
                     })
+                    .when('/newproject', {
+                        templateUrl: 'views/project-new.html',
+                        controller: 'NewProjectController'
+                    })
                     .otherwise({
                         redirectTo: '/'
                     });
@@ -104,6 +108,29 @@
 
                     $scope.video = $sce.trustAsResourceUrl(rsp.video);
                 });
+            })
+            .controller('NewProjectController',function($scope,$http,$location){
+                $scope.submit = function() {
+                    var url = "/projects";
+                    var headers = { headers: {'Content-Type': 'application/json'} };
+                    var newProject = $('#textArea').val();
+
+                    $http.post(url,newProject,headers).success(successCb).error(errorCb());
+
+                    function successCb(rsp) {
+                        $location.path('#/');
+                    }
+                    function errorCb() {
+                        $location.path('#/newproject');
+                    }
+                };
+            })
+            .directive('href', function() {
+                return {
+                    compile: function(element) {
+                        element.attr('target', '_blank');
+                    }
+                };
             });
     </script>
 

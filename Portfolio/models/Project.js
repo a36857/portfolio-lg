@@ -23,9 +23,10 @@ var projectSchema = new mongoose.Schema({
         image: String,
         url: String
     }],
-    images: [{
-        image: String
-    }],
+    images: {
+      type: [String],
+      required: true
+    },
     video: String,
     deployment: {
         image: String,
@@ -36,7 +37,7 @@ var projectSchema = new mongoose.Schema({
     partners: [{
         name: String,
         url: String
-    }],
+    }]
 });
 
 module.exports = mongoose.model('project',projectSchema);

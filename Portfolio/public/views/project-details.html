@@ -1,0 +1,92 @@
+<div ng-controller="ProjectDetailsController">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">{[{ project.title }]}
+        <small>{[{ project.deployment.name }]}</small>
+      </h1>
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div id="Carousel" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="item active">
+            <img class="img-responsive" ng-src="{[{ imageFirst.image }]}" width="700" height="300" alt="">
+          </div>
+          <div class="item" ng-repeat = "image in images">
+            <img class="img-responsive" ng-src="{[{ image.image }]}" width="700" height="300" alt="">
+          </div>
+        </div>
+        <span class="left carousel-control" data-target="#Carousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </span>
+        <span class="right carousel-control" data-target="#Carousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </span>
+      </div>
+
+
+    </div>
+
+    <div class="col-md-6">
+      <h3>Introduction</h3>
+      <p>{[{ project.introduction }]}</p>
+    </div>
+
+  </div>
+
+  <hr/>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Project Description</h3>
+            <p>{[{ project.description }]}</p>
+        </div>
+
+      <div class="col-md-6">
+        <video width="600" height="300" autoplay ng-src="{[{ video }]}">Your browser does not support the video tag.</video>
+      </div>
+    </div>
+
+  <hr/>
+
+  <div class="row">
+    <div class="col-md-8">
+      <h6>Powered by:
+        <span ng-repeat = "tech in project.technologies">
+						<a href="{[{ tech.url }]}">
+							<img width="64" height="64" ng-src="{[{ tech.image }]}" alt="">
+						</a>
+        </span>
+      </h6>
+    </div>
+
+    <div class="col-md-4">
+      <div class="col-md-6">
+        <div>
+          <a href="{[{ project.deployment.url }]}">
+            <img width="16" height="16" ng-src="{[{ project.deployment.image }]}" alt=""/>
+            <span>Deployment</span>
+          </a>
+        </div>
+        <div>
+          <a href="{[{ project.git }]}">
+            <img width="16" height="16" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt=""/>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div ng-repeat="partner in project.partners">
+          <a href="{[{ partner.url }]}">
+            <img width="16" height="16" src="http://signupsale.com/assets/img/icons/social/linkedin.svg" alt=""/>
+            <span>{[{ partner.name }]}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

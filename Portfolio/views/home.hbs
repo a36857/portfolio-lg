@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio">
+    <meta name="author" content="LG">
+
+    <link href="favicon.png" rel="icon"/>
+    <title>Portfolio LG</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link href="/stylesheets/style.css" rel="stylesheet"/>
+
+    <!-- js Scripts -->
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.min.js"></script>
+</head>
+<body>
+    <div ng-app = "mainApp">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ng-href="#/">Portfolio</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!--
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                    -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>Luis Guerreiro</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div ng-view=""></div>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>&copy; LG 2016. All rights reserved</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    </div>
+
+    <script>
+        angular.module("mainApp", ['ngRoute'])
+            .config(function($interpolateProvider) {
+                $interpolateProvider.startSymbol('{[{');
+                $interpolateProvider.endSymbol('}]}');
+            })
+            .config(function ($routeProvider) {
+                $routeProvider
+                    .when('/', {
+                        templateUrl: '/views/projects-list.html',
+                        controller: 'ProjectsController'
+                    })
+                    .when('/projects/:id', {
+                        templateUrl: 'views/project-details.html',
+                        controller: 'ProjectDetailsController'
+                    })
+                    .otherwise({
+                        redirectTo: '/'
+                    });
+            })
+            .controller('ProjectsController',function($scope,$http){
+                var url = "/projects";
+
+                $http.get(url).success( function(rsp) {
+                    $scope.projects = rsp;
+                });
+            })
+            .controller('ProjectDetailsController',function($scope,$routeParams,$http,$sce){
+                var url = "/projects/" + $routeParams.id;
+
+                $http.get(url).success( function(rsp) {
+                    $scope.imageFirst = rsp.images.shift();;
+                    $scope.images = rsp.images;
+
+                    $scope.project = rsp;
+
+                    $scope.video = $sce.trustAsResourceUrl(rsp.video);
+                });
+            });
+    </script>
+
+</body>
+</html>

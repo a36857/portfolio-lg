@@ -1,7 +1,7 @@
 'use strict';
 
 const Project = require('../models/Project');
-const redis   = require('../redisClient');
+const redis   = require('../helpers/redis');
 
 const REDIS_DB = 'portfolio:projects';
 
@@ -9,6 +9,7 @@ module.exports.list = function(req,rsp,next) {
     redis.get(REDIS_DB, function(err,projects){
         if(projects!=null) rsp.send(JSON.parse(projects));
         else {
+            console.log('projects from mongodb');
             Project.find({}, function(err,projectsDB) {
                 if (err) {
                     rsp.status(500);

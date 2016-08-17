@@ -12,20 +12,23 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/assets/css/bootstrap-dialog.min.css" rel="stylesheet"/>
 
     <!-- Custom CSS -->
     <link href="/assets/css/style.css" rel="stylesheet"/>
+    <link href="/assets/css/spinners.css" rel="stylesheet"/>
 
     <!-- js Scripts -->
     <script src="/assets/javascripts/jquery.min.js"></script>
     <script src="/assets/javascripts/bootstrap.min.js"></script>
+    <script src="/assets/javascripts/bootstrap-dialog.min.js"></script>
     <script src="/assets/javascripts/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.min.js"></script>
 </head>
 <body>
     <div ng-app = "mainApp">
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -62,6 +65,16 @@
                 </div>
             </footer>
 
+        </div>
+
+        <div id="spinner">
+            <div id="overlay"></div>
+            <div id="loader" class="sk-folding-cube">
+                <div class="sk-cube1 sk-cube"></div>
+                <div class="sk-cube2 sk-cube"></div>
+                <div class="sk-cube4 sk-cube"></div>
+                <div class="sk-cube3 sk-cube"></div>
+            </div>
         </div>
 
     </div>

@@ -1,0 +1,17 @@
+ISSUES-WEB API
+The Issues API was the project of Web Applications Development class. The goal was to implement an issues management service
+where someone could manage the issues from their projects. The application has a REST API to interact programmatically with
+the projects and their issues, and an UI to interact visually. The application doesn't have authentication mechanisms.
+
+The REST API uses the hypermedia types Collection+JSON (to get a list of resources) and Siren (to get a single resources)
+to represent the context resource and standardized the responses to the clients. The Issues API was implemented using 
+the ASP.Net Web API and the all the data is stored in the SQL Server database. For the server communicate with the database,
+it was used the Entity Framework. The UI was implemented with React and Bootstrap (it was not used the react-route module).
+
+
+PORTFOLIO
+This simple application was an aside project with the goal to list all the projects that I have done with a web component
+and to learn MongoDB and Angular. It lists all the projects and shows the details of the selected project.
+
+The Portfolio application is done with the MEAN Stack (MongoDB, Express, Angular, Node). Since this one is a very simple
+project, I built the stack on my own. The UI uses Bootstrap.

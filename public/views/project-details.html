@@ -81,13 +81,13 @@
       </div>
 
       <div class="col-md-6">
-          <div>
+          <div ng-if="project.deployment.url != undefined">
             <a href="{[{ project.deployment.url }]}">
               <img width="16" height="16" ng-src="{[{ project.deployment.image }]}" alt=""/>
               <span>Deployment</span>
             </a>
           </div>
-          <div>
+          <div ng-if="project.git != undefined">
             <a href="{[{ project.git }]}">
               <img width="16" height="16" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt=""/>
               <span>GitHub</span>

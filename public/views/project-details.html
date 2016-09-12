@@ -40,15 +40,16 @@
   <hr/>
 
     <div class="row">
-        <div class="col-md-6">
-            <h3>Project Description</h3>
-            <p>{[{ project.description }]}</p>
+        <div class="col-md-6 col-md-push-6">
+          <video id="video-player" width="600" height="300" controls ng-src="{[{ video }]}">
+            Your browser does not support the video tag.
+          </video>
         </div>
 
-      <div class="col-md-6">
-        <video id="video-player" width="600" height="300" autoplay controls loop ng-src="{[{ video }]}">
-          Your browser does not support the video tag.
-        </video>
+      <div class="col-md-6 col-md-pull-6">
+
+        <h3>Project Description</h3>
+        <p>{[{ project.description }]}</p>
       </div>
     </div>
 
@@ -57,7 +58,7 @@
   <div class="row">
     <div class="col-md-8">
       <h6>Powered by:
-        <span ng-repeat = "tech in project.technologies">
+        <span ng-repeat="tech in project.technologies">
 						<a href="{[{ tech.url }]}">
 							<img width="64" height="64" ng-src="{[{ tech.image }]}" alt="">
 						</a>
@@ -65,28 +66,33 @@
       </h6>
     </div>
 
+    <hr id="about-divider" />
+
     <div class="col-md-4">
       <div class="col-md-6">
-        <div>
-          <a href="{[{ project.deployment.url }]}">
-            <img width="16" height="16" ng-src="{[{ project.deployment.image }]}" alt=""/>
-            <span>Deployment</span>
-          </a>
-        </div>
-        <div>
-          <a href="{[{ project.git }]}">
-            <img width="16" height="16" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt=""/>
-            <span>GitHub</span>
-          </a>
-        </div>
+
+          <div ng-repeat="partner in project.partners">
+            <a href="{[{ partner.url }]}">
+              <img width="16" height="16" src="http://signupsale.com/assets/img/icons/social/linkedin.svg" alt=""/>
+              <span>{[{ partner.name }]}</span>
+            </a>
+          </div>
+
       </div>
+
       <div class="col-md-6">
-        <div ng-repeat="partner in project.partners">
-          <a href="{[{ partner.url }]}">
-            <img width="16" height="16" src="http://signupsale.com/assets/img/icons/social/linkedin.svg" alt=""/>
-            <span>{[{ partner.name }]}</span>
-          </a>
-        </div>
+          <div>
+            <a href="{[{ project.deployment.url }]}">
+              <img width="16" height="16" ng-src="{[{ project.deployment.image }]}" alt=""/>
+              <span>Deployment</span>
+            </a>
+          </div>
+          <div>
+            <a href="{[{ project.git }]}">
+              <img width="16" height="16" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt=""/>
+              <span>GitHub</span>
+            </a>
+          </div>
       </div>
     </div>
 

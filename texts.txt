@@ -15,3 +15,24 @@ and to learn MongoDB and Angular. It lists all the projects and shows the detail
 
 The Portfolio application is done with the MEAN Stack (MongoDB, Express, Angular, Node). Since this one is a very simple
 project, I built the stack on my own. The UI uses Bootstrap.
+
+
+NFOxAPP
+This project was my course's final project and it was for a private clinic in Lisbon.
+The goal was to receive Excel files, integrating them, cleaning them and making them available to a wide range of medical users.
+There are two versions of Excel files that can be uploaded: nurses files about patients and laboratory patients analysis files,
+that will be differentiated and proceceded properly depending on their context.
+The application allows downloading data integrated into a single CSV (Comma-Separated Values) file depending on a timestamp
+or get the original uploaded Excel file. The app allows to delete all the data from an uploaded Excel file, but is still
+possible to download the original file.
+The application presents statistical information from the data uploaded.
+
+The web application is composed by 4 components: the server application (done with Spring MVC + Thymeleaf), a Message Queue
+(RabbitMQ), an ETL Proccess (Pentaho - Kettle) and a database (PostgreSQL).
+The client uploads Excel files to the server, the server then sends the information to a message queue and inserts relevant
+data about the extraction state of the file in the database. Since we can have ovelap of data, we introduced the message queue
+to our stack. When data are inserted on the message queue, the data is sent to the ETL Proccess to extract the information from
+the file.
+When the ETL Proccess finish, the same proccess inserts the data in the database. When the server receives a request to get
+all the information on a CSV file depending on a timestamp, goes to the database and retrieves all the information filtering
+the information by the visit date of the patient.

@@ -7,6 +7,12 @@ var projectSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    code: {
+        type: Number,
+        min: 1,
+        required: true,
+        unique: true
+    },
     cover: {
         type: String,
         required: true

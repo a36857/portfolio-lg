@@ -7,6 +7,10 @@ p {
   text-justify: inter-word;
 }
 
+.download {
+  color: #28415b;
+}
+
 @media(min-width: 990px) {
   #about-divider {
     display: none;

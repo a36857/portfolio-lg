@@ -1,5 +1,7 @@
 'use strict';
 
+console.log("Hello! Seems you are interested in what I did. Don't forget to contact me to guerreiro.lg92@gmail.com");
+
 angular.module("mainApp", ['ngRoute'])
   .config(function($interpolateProvider) {
     $interpolateProvider.startSymbol('{[{');

@@ -47,11 +47,33 @@
                         {{/if}}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a>Guerreiro</a></li>
+                        <li><a href=""><span data-toggle="modal" data-target="#myModal">Guerreiro</span></a></li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title">Contact Me</h3>
+                    </div>
+                    <div class="modal-body">
+                        <h5><span><i class="glyphicon glyphicon-phone"></i>&nbsp;&nbsp;(+351) 913486034</span></h5>
+                        <h5><span><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;guerreiro.lg92@gmail.com</span></h5>
+                        <h5>
+                          <a ng-href="/download" class="download">
+                              <span><i class="glyphicon glyphicon-save-file"></i>&nbsp;&nbsp;CV</span>
+                          </a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <div class="container">
             <div ng-view=""></div>

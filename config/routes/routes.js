@@ -1,5 +1,6 @@
 const ctrProject = require('../../app/controllers/ProjectController');
 const ctrHome    = require('../../app/controllers/HomeController');
+const ctrDown    = require('../../app/controllers/DownloadController');
 
 const express = require('express');
 
@@ -12,7 +13,8 @@ router.route('/projects')
 router.route('/projects/:id').get(ctrProject.show);
 
 
-router.get('/',ctrHome.get)
+router.get('/',ctrHome.get);
 
+router.get('/download',ctrDown.get);
 
 module.exports = router;

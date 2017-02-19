@@ -1,4 +1,5 @@
 const ctrProject = require('../../app/controllers/ProjectController');
+const ctrLog     = require('../../app/controllers/LogController');
 const ctrHome    = require('../../app/controllers/HomeController');
 const ctrDown    = require('../../app/controllers/DownloadController');
 
@@ -12,6 +13,7 @@ router.route('/projects')
   .post(ctrProject.create);
 router.route('/projects/:id').get(ctrProject.show);
 
+router.get('/logs',ctrLog.list)
 
 router.get('/',ctrHome.get);
 

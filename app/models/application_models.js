@@ -1,5 +1,6 @@
 'use strict';
 
 module.exports = {
-    Project: require('./Project')
+    Project: require('./Project'),
+    Logger: require('./Logger')
 }

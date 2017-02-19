@@ -17,21 +17,11 @@ p {
   }
 }
 
-@media screen and (max-width: 568px) {
-  #video-player {
-    -webkit-transform: translate(-30px);
-    transform: translate(-30px);
-  }
+#video-player {
+  width: 100%;
+  height: auto;
 }
 
-@media screen and (max-width: 480px) {
-    #video-player {
-      width:290px;
-      height:200px;
-      -webkit-transform: translate(-10px);
-      transform: translate(-10px);
-    }
-}
 /* Spinner */
 #spinner {
   display: none;
